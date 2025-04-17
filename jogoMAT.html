@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo de Matemática para Crianças</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0
+            
+            
+        }
+        #game-container {
+            background-color: #fff;
+            padding: 60px;
+            border-radius: 55px;
+           border: solid;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 {
+            color: #ff4081;
+            font-size: 28px;
+        }
+        #question {
+            font-size: 24px;
+            margin: 20px 0;
+            color: #3f51b5;
+        }
+        #answer {
+            padding: 10px;
+            font-size: 18px;
+            width: 80px;
+            border: 2px solid #ffeb3b;
+            border-radius: 5px;
+            text-align: center;
+        }
+        #submit {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        #submit:hover {
+            background-color: #45a049;
+        }
+        #feedback {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #d81b60;
+        }
+        #score {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #ff9800;
+        }
+        .star {
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <h1>Jogo de Matemática 🌟</h1>
+        <div id="score">Estrelas: 0 ⭐</div>
+        <div id="question"></div>
+        <input type="number" id="answer" autofocus>
+        <button id="submit" onclick="checkAnswer()">Enviar 🚀</button>
+        <div id="feedback"></div>
+    </div>
+
+    <div id="sol">
+        <img src="sol.avif" alt="">
+    </div>
+
+    <script>
+        let score = 0;
+        let correctAnswer;
+
+        function generateQuestion() {
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            const operation = Math.random() > 0.5 ? '+' : '-';
+
+            let question;
+            if (operation === '+') {
+                question = `${num1} + ${num2} = ?`;
+                correctAnswer = num1 + num2;
+            } else {
+                // Garantir que o resultado da subtração não seja negativo
+                const max = Math.max(num1, num2);
+                const min = Math.min(num1, num2);
+                question = `${max} - ${min} = ?`;
+                correctAnswer = max - min;
+            }
+
+            document.getElementById('question').textContent = question;
+            document.getElementById('answer').value = '';
+            document.getElementById('answer').focus();
+            document.getElementById('feedback').textContent = '';
+        }
+
+        function checkAnswer() {
+            const userAnswer = parseInt(document.getElementById('answer').value);
+            if (userAnswer === correctAnswer) {
+                score += 1;
+                document.getElementById('feedback').textContent = 'Parabéns! Você acertou! 🎉';
+                document.getElementById('score').textContent = `Estrelas: ${score} ⭐`;
+            } else {
+                document.getElementById('feedback').textContent = `Ops! A resposta era ${correctAnswer}. Tente de novo! 😊`;
+            }
+            setTimeout(generateQuestion, 2000);
+        }
+
+        // Iniciar o jogo
+        generateQuestion();
+
+        // Permitir envio com a tecla Enter
+        document.getElementById('answer').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                checkAnswer();
+            }
+        });
+    </script>
+</body>
+</html>
