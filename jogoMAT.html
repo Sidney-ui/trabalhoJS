@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,27 +13,29 @@
             align-items: center;
             height: 100vh;
             margin: 0
-            
-            
         }
+
         #game-container {
             background-color: #fff;
             padding: 60px;
             border-radius: 55px;
-           border: solid;
+            border: solid;
             text-align: center;
             max-width: 500px;
             width: 100%;
         }
+
         h1 {
             color: #ff4081;
             font-size: 28px;
         }
+
         #question {
             font-size: 24px;
             margin: 20px 0;
             color: #3f51b5;
         }
+
         #answer {
             padding: 10px;
             font-size: 18px;
@@ -41,6 +44,7 @@
             border-radius: 5px;
             text-align: center;
         }
+
         #submit {
             padding: 10px 20px;
             font-size: 16px;
@@ -51,25 +55,38 @@
             border-radius: 5px;
             margin-top: 10px;
         }
+
         #submit:hover {
             background-color: #45a049;
         }
+
         #feedback {
             margin-top: 20px;
             font-size: 18px;
             color: #d81b60;
         }
+
         #score {
             font-size: 20px;
             margin: 10px 0;
             color: #ff9800;
         }
+
         .star {
             font-size: 24px;
         }
     </style>
 </head>
+
 <body>
+
+
+    <div id="sol" style="height: 10vh;">
+        <img src="sol.avif" alt="">
+    </div>
+
+
+
     <div id="game-container">
         <h1>Jogo de Matemática 🌟</h1>
         <div id="score">Estrelas: 0 ⭐</div>
@@ -79,9 +96,7 @@
         <div id="feedback"></div>
     </div>
 
-    <div id="sol">
-        <img src="sol.avif" alt="">
-    </div>
+
 
     <script>
         let score = 0;
@@ -126,11 +141,13 @@
         generateQuestion();
 
         // Permitir envio com a tecla Enter
-        document.getElementById('answer').addEventListener('keypress', function(event) {
+        document.getElementById('answer').addEventListener('keypress', function (event) {
             if (event.key === 'Enter') {
                 checkAnswer();
             }
         });
     </script>
+   <script src="script.js"></script>
 </body>
+
 </html>

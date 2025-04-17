@@ -1,5 +1,5 @@
 .body{
-    background-color: rgb(143, 228, 223);
+    background-color: rgb(85, 179, 171);
 }
 
 .container{
@@ -8,9 +8,8 @@
    margin-top: 8px;
 }
 
-#imagem1{
-    margin-top: 1px;
-}
+
+
 
 #nav{
     font-family: 'Courier New', Courier, monospace;
